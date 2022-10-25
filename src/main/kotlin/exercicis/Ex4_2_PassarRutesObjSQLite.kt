@@ -18,7 +18,10 @@ fun main(args: Array<String>) {
         while (true) {
             val e = read.readObject() as Ruta
             var nombre = e.nom
-            st.executeUpdate("INSERT INTO RUTES VALUES ($contador, '$nombre')")
+            var desnivell= e.desnivell
+            var desnivellac=e.desnivellAcumulat
+
+            st.executeUpdate("INSERT INTO RUTES VALUES ($contador, '$nombre', $desnivell, $desnivellac)")
             e.mostrarRuta()
             contador++
 
