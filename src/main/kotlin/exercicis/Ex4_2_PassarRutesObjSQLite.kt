@@ -20,9 +20,22 @@ fun main(args: Array<String>) {
             var nombre = e.nom
             var desnivell= e.desnivell
             var desnivellac=e.desnivellAcumulat
-
+            var contaPuntos = 1
+//            var sentencia="INSERT INTO RUTES VALUES ($contador, '$nombre', $desnivell, $desnivellac)"
+//            println(sentencia)
             st.executeUpdate("INSERT INTO RUTES VALUES ($contador, '$nombre', $desnivell, $desnivellac)")
-            e.mostrarRuta()
+            for (p in e.llistaDePunts) {
+                var nomPunt = p.nom
+                var longitud = p.coord.longitud
+                var latitud = p.coord.latitud
+//                var sentencia2="INSERT INTO PUNTS VALUES ($contador, $contaPuntos, '$nomPunt', $latitud, $longitud)"
+//                println(sentencia2)
+                st.executeUpdate("INSERT INTO PUNTS VALUES ($contador, $contaPuntos, '$nomPunt', $latitud, $longitud)")
+                contaPuntos++
+            }
+
+
+
             contador++
 
         }
@@ -38,5 +51,4 @@ fun main(args: Array<String>) {
 
 
 
-    val st2 = con.createStatement()
 }
