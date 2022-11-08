@@ -33,19 +33,26 @@ class GestionarRutesBD {
         val desnivell = r.desnivell
         val desnac = r.desnivellAcumulat
         val pr= "INSERT INTO RUTES VALUES ($num_r, '$nomR', $desnivell, $desnac)"
-//        st1.executeUpdate("INSERT INTO RUTES VALUES ($num_r, '$nomR', $desnivell, $desnac)")
+        st1.executeUpdate("INSERT INTO RUTES VALUES ($num_r, '$nomR', $desnivell, $desnac)")
         val ultimoNUmeroPunts= "SELECT MAX(num_p) FROM PUNTS"
         val rspunts = st1.executeQuery(ultimoNUmeroPunts)
         var num_p = rspunts.getInt(1)
+
         for (r in r.llistaDePunts) {
             num_p++
             val nom_p = r.nom
             val latitud = r.coord.latitud
             val longitud = r.coord.longitud
 
-            val pr2 = "INSERT INTO PUNTS VALUES ($num_r, '$num_p', $nom_p, $latitud, $longitud)"
-            println(pr2)
+//            val pr2 = "INSERT INTO PUNTS VALUES ($num_r, '$num_p', $nom_p, $latitud, $longitud)"
+            st2.executeUpdate("INSERT INTO PUNTS VALUES ($num_r, '$num_p', $nom_p, $latitud, $longitud)")
+
+//            println(pr2)
         }
+
+//        fun buscar(i: Int): Ruta {
+//
+//        }
 
 
 
